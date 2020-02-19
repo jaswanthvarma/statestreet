@@ -20,7 +20,7 @@ A step by step series of examples that tell you how to get a development env run
 
 ```
 1.Node >= 8.10
-2.Download the package zip/use git clone https://github.com/Jessy-developer/SIMS.git 
+2.Download the package zip/use git clone https://github.com/jaswanthvarma/statestreet.git
 3.npm install (inside the directory)
 4.npm Start
 5.open http://localhost:3000/ in your web browser to start
