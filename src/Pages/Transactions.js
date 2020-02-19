@@ -15,7 +15,8 @@ export default function Transactions() {
         let checked_values = [];
         for (let index = 0; index < els.length; index++) {
             if (els[index].checked === true) {
-                checked_values.push(els[index].value)
+                //toLowerCase to remove case sensitive
+                checked_values.push(els[index].value.toLowerCase())
             }
         }
 
@@ -26,7 +27,8 @@ export default function Transactions() {
             //if any accountNames got checked
             if (checked_values.length > 0) {
                 filter_data = JSONData.transactions.filter((element) => {
-                    if (checked_values.indexOf(element.accountName) > -1) {
+                    //toLowerCase to remove case sensitive
+                    if (checked_values.indexOf(element.accountName.toLowerCase()) > -1) {
                         return true;
                     } else {
                         return false;
@@ -38,7 +40,8 @@ export default function Transactions() {
             //if any transactionTypes got checked
             if (transactionTypes.length > 0) {
                 let filtered_data = filter_data.filter((element) => {
-                    if (transactionTypes.indexOf(element.transactionType) > -1) {
+                    //toLowerCase to remove case sensitive
+                    if (transactionTypes.indexOf(element.transactionType.toLowerCase()) > -1) {
                         return true;
                     } else {
                         return false;
@@ -54,7 +57,8 @@ export default function Transactions() {
             //if any transactionTypes got checked
             if (checked_values.length > 0) {
                 filter_data = JSONData.transactions.filter((element) => {
-                    if (checked_values.indexOf(element.transactionType) > -1) {
+                    //toLowerCase to remove case sensitive
+                    if (checked_values.indexOf(element.transactionType.toLowerCase()) > -1) {
                         return true;
                     } else {
                         return false;
@@ -66,7 +70,8 @@ export default function Transactions() {
             //if any accountNames got checked
             if (accountNames.length > 0) {
                 let filtered_data = filter_data.filter((element) => {
-                    if (accountNames.indexOf(element.accountName) > -1) {
+                    //toLowerCase to remove case sensitive
+                    if (accountNames.indexOf(element.accountName.toLowerCase()) > -1) {
                         return true;
                     } else {
                         return false;
@@ -77,7 +82,6 @@ export default function Transactions() {
                 setData(filter_data);
             }
         }
-
     }
     return (
         <Container>
@@ -87,7 +91,7 @@ export default function Transactions() {
             <hr />
             <Row>
                 <Col xs="2">
-                    <Filters filterResults={filterResults} />
+                    <Filters data={JSONData.transactions} filterResults={filterResults} />
                 </Col>
                 <Col xs="10">
                     <TransactionsTable data={data} />
