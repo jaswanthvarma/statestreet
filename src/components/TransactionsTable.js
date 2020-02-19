@@ -1,33 +1,46 @@
 import React from 'react';
-import { Table } from 'reactstrap';
-import { HashRouter as Router, Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
+import DataTable, { createTheme } from 'react-data-table-component';
 
-
-export default withRouter(function TransactionsTable({ data }) {
-    return (
-        <Table bordered>
-            <thead>
-                <tr>
-                    <th>ACCOUNT NO.</th>
-                    <th>ACCOUNT NAME</th>
-                    <th>CURRENCY</th>
-                    <th>AMOUNT</th>
-                    <th>TRANSACTION TYPE</th>
-                </tr>
-            </thead>
-            <tbody>
-                <Router>
-                    {data.map((element, index) => {
-                        return (<tr key={index}>
-                            <td><Link to={`/view-transaction/${element.account}`} >{element.account}</Link></td>
-                            <td>{element.accountName}</td>
-                            <td>{element.currencyCode}</td>
-                            <td>{element.amount}</td>
-                            <td>{element.transactionType}</td>
-                        </tr>);
-                    })}
-                </Router>
-            </tbody>
-        </Table>
-    )
+createTheme('solarized', {
+    header:{
+        display:'none',
+    }
 });
+export default function TransactionsTable({ data }) {
+    const columns = [
+        {
+            name: 'ACCOUNT NO.',
+            selector: 'account',
+            cell: el => <Link to={`/view-transaction/${el.account}`}>{el.account}</Link>,
+            sortable: true,
+        },
+        {
+            name: 'ACCOUNT NAME',
+            selector: 'accountName',
+            sortable: true,
+        },
+        {
+            name: 'CURRENCY',
+            selector: 'currencyCode',
+            sortable: true,
+        },
+        {
+            name: 'AMOUNT',
+            selector: 'amount',
+            sortable: true,
+        },
+        {
+            name: 'TRANSACTION TYPE',
+            selector: 'transactionType',
+            sortable: true,
+        }
+    ];
+    return (
+        <DataTable
+            columns={columns}
+            data={data}
+            pagination
+        />
+    )
+}

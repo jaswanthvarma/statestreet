@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import JSONData from '../data/data.json';
 import { useParams } from "react-router-dom";
-import { HashRouter as Router, Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export default withRouter(function ViewTransaction() {
+export default function ViewTransaction() {
     const { account_no } = useParams();
     const [transaction] = useState(JSONData.transactions.filter((element) => element.account === account_no));
     return (
@@ -12,11 +12,9 @@ export default withRouter(function ViewTransaction() {
             <Row>
                 <Col className="mt-3">
                     <h2 className="float-left" >Transaction {account_no}</h2>
-                    <Router>
-                        <Link to="/">
-                            <button className="btn btn-primary float-right"> {`Back To Transactions`}</button>
-                        </Link>
-                    </Router>
+                    <Link to="/">
+                        <button className="btn btn-primary float-right"> {`Back To Transactions`}</button>
+                    </Link>
                 </Col>
             </Row>
             <hr />
@@ -31,4 +29,4 @@ export default withRouter(function ViewTransaction() {
             </Row>
         </Container>
     )
-});
+}

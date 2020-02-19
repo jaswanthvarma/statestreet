@@ -13,3 +13,14 @@ code {
 .bg-grey{
   background-color: rgb(233, 231, 231);
 }
+
+/* data table css */
+.rdt_TableHeader{
+  display: none !important;
+}
+.rdt_TableCol div{
+  font-weight:bolder !important;
+}
+.rdt_TableCell{
+  font-weight:300 !important;
+}
