@@ -6,13 +6,7 @@ import { HashRouter as Router, Link, withRouter } from "react-router-dom";
 
 export default withRouter(function ViewTransaction() {
     const { account_no } = useParams();
-    const [transaction] = useState(JSONData.transactions.filter((element) => {
-        if (element.account === account_no) {
-            return true;
-        } else {
-            return false;
-        }
-    }));
+    const [transaction] = useState(JSONData.transactions.filter((element) => element.account === account_no));
     return (
         <Container>
             <Row>
