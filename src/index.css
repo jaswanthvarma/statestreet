@@ -1,0 +1,15 @@
+body {
+  font-weight: 300;
+  font-size: 0.85rem;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: 'Roboto', sans-serif;
+}
+
+.bg-grey{
+  background-color: rgb(233, 231, 231);
+}
